@@ -1,9 +1,8 @@
 Router:
-Alinterfaceket létrehozzuk a routeren:
+Alinterfészeket létrehozzuk a routeren:
 pl.: int g0/0/0.10
-encapsulation dot1Q 10 <-- (alinterfacenek a száma)
+encapsulation dot1Q 10 <-- (alinterfésznek a száma)
 ip address pl.: 172.30.10.254 (utolsó kiosztható cím)
-
 
 Switch:
 # vlan létrehozása:
@@ -11,19 +10,19 @@ vlan 10 <-- (vlan száma)
 # vlan elnevezése:
 name xy
 
-# A alinterfacek ip címe általánosságban default-gateway
+# Az alinterfészek ip-címe általánosságban default-gateway
 # default-gateway megadása:
-ip default-gateway (ip cím)
+ip default-gateway (ip-cím)
 
-# vlan ip kiosztás:
+# vlan ip-kiosztás:
 int vlan 30
 ip address pl.: 172.30.30.1 255.255.255.0 (első kiosztható cím)
 
 Trunkölés:
 pl.: int g0/2 
-switchport mode trunk (a switchek között mindegyik kábelen )
+switchport mode trunk (a switchek között mindegyik kábelen)
 
-# Belépünk az összes számítógépbe ami az adott tartományba tartozik
+# Belépünk az összes számítógépbe, ami az adott tartományba tartozik
 # switch access megadása:
 pl.: int fa0/1
 switchport mode access
@@ -33,17 +32,17 @@ DHCP Szerver:
 service on
 	Router:
 	# Szerverre néző kábelt kell int-elni
-	ip helper-address 172.30.1.1 (dns szerver ip-je)
+	ip helper-address 172.30.1.1 (dns-szerver ip-je)
 A SZERVERBEN KELL IP-T ADNI (desktop)
 
 Védelmi cucc:
-# meg kell int-elni azt a gépet ahol be akarjuk állítani pl.: int fa0/1
+# meg kell int-elni azt a gépet, ahol be akarjuk állítani pl.: int fa0/1
 switchport port-security mac-address sticky
 switchport port-security
 
 Switch:
 vtp domain 313.local
-vtp password (jelszo) # ezt az összes switchen meg kell csinálni
+vtp password (jelszó) # ezt az összes switchen meg kell csinálni
 # ha külön kéri:
 vtp mode
 
